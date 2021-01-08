@@ -17,10 +17,10 @@ Runs either `.fit()` or `.test()` on a single node across multiple gpus.
 import os
 from argparse import ArgumentParser
 
-from pytorch_lightning import Trainer, seed_everything
-from tests.base import EvalModelTemplate
-
 import torch
+
+from pytorch_lightning import seed_everything, Trainer
+from tests.base import BoringModel
 
 
 def main():
@@ -35,7 +35,7 @@ def main():
     parser.set_defaults(accelerator="ddp")
     args = parser.parse_args()
 
-    model = EvalModelTemplate()
+    model = BoringModel()
     trainer = Trainer.from_argparse_args(args)
 
     result = {}
