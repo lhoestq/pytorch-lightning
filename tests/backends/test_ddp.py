@@ -16,8 +16,7 @@ import os
 import pytest
 import torch
 
-from tests.backends import ddp_model
-from tests.backends import DDPLauncher
+from tests.backends import ddp_model, DDPLauncher
 from tests.utilities.distributed import call_training_script
 
 
@@ -70,7 +69,7 @@ def test_multi_gpu_model_ddp_fit_test(tmpdir, cli_args):
 
     model_outs = result['result']
     for out in model_outs:
-        assert out['test_acc'] > 0.90
+        assert out['test_loss'] > 0.90
 
 
 # START: test_cli ddp test
