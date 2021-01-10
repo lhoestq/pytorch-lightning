@@ -25,9 +25,10 @@ from tests.base import BoringModel
 
 class CustomBoringModel(BoringModel):
     def test_step(self, *args, **kwargs):
-        super().test_step(*args, **kwargs)
+        out = super().test_step(*args, **kwargs)
         self.log('test_loss', out['y'])
         return out
+
 
 def main():
     seed_everything(1234)
