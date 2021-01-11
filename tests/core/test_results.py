@@ -191,8 +191,8 @@ def test_result_obj_predictions(tmpdir, test_option, do_train, gpus):
         result = trainer.fit(model, dm)
         assert result
         result = trainer.test(datamodule=dm)
-        # result = result[0]
-        # assert result['test_loss'] < 0.6
+        # TODO: add end-to-end test
+        # assert result[0]['test_loss'] < 0.6
     else:
         result = trainer.test(model, datamodule=dm)
 
